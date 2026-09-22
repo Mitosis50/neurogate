@@ -1,0 +1,6 @@
+# Electrode-yield predictor feature schema v0
+# Baseline: BrainGate 35.6% mean initial yield, 7% decline/1063d
+count: int
+impedance_kohm: float
+array_type: string
+days_post_implant: int
