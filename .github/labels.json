@@ -1,0 +1,29 @@
+{
+ "labels": [
+  {
+   "name": "good first issue",
+   "color": "7057ff",
+   "description": "first-time contributor friendly"
+  },
+  {
+   "name": "assist:ai-drafted",
+   "color": "0e8a16",
+   "description": "first response drafted by AI fleet, human-confirmed"
+  },
+  {
+   "name": "law-pack",
+   "color": "1d76db",
+   "description": "jurisdiction law-pack changes (council approval needed)"
+  },
+  {
+   "name": "benchmark",
+   "color": "fbca04",
+   "description": "decoder benchmark suite"
+  },
+  {
+   "name": "ratchet:24h",
+   "color": "d93f0b",
+   "description": "must receive public response within 24h"
+  }
+ ]
+}
