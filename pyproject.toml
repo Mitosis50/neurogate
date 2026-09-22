@@ -4,12 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "neurogate"
-version = "0.1.0"
-description = "Open compliance & rights toolkit for neural data - benchmarks + governance for democratized BCI"
+version = "0.3.0"
+description = "Experimental toolkit documenting neural-dataset use and reproducing decoder evaluations - honest receipts, no compliance PASS"
 readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "Apache-2.0"}
-authors = [{name = "Elbert Basa"}, {name = "Mira (AI co-maintainer)"}]
+authors = [{name = "Elbert Basa"}, {name = "Mira (AI assistant, nonvoting)"}]
 keywords = ["neurodata", "bci", "governance", "privacy", "nwb", "spikeinterface", "benchmark"]
 classifiers = [
   "Development Status :: 3 - Alpha",
@@ -18,7 +18,7 @@ classifiers = [
   "Programming Language :: Python :: 3",
   "Topic :: Scientific/Engineering",
 ]
-dependencies = ["pyyaml>=6.0"]
+dependencies = ["pyyaml>=6.0", "numpy>=1.24"]
 
 [project.optional-dependencies]
 nwb = ["pynwb>=2.6"]
@@ -30,3 +30,9 @@ neurogate = "neurogate.cli:main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+neurogate = ["py.typed"]
