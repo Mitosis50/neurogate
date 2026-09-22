@@ -13,7 +13,7 @@ from .bench import list_benchmarks, run_benchmark
 
 
 def cmd_init(args):
-    p = build_manifest(args.path, owner=args.owner, jurisdiction=args.jurisdiction)
+    p = build_manifest(args.path, owner=args.owner, jurisdiction=args.jurisdiction, contact=args.contact)
     print(json.dumps(p, indent=2))
     print(f"\nNDRM written to {args.path}/ndrm.yaml — commit it next to your data.")
 
@@ -26,9 +26,6 @@ def cmd_check(args):
 
 
 def cmd_bench(args):
-    if args.list:
-        print("\n".join(list_benchmarks()))
-        return
     res = run_benchmark(args.benchmark, args.data)
     print(json.dumps(res, indent=2))
 
@@ -45,14 +42,14 @@ def main():
     ap.add_argument("--version", action="version", version=f"neurogate {__version__}")
     sub = ap.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("init", help="create a neurodata-rights manifest")
-    p.add_argument("path"); p.add_argument("--owner", default=""); p.add_argument("--jurisdiction", default="US-CA")
+    p.add_argument("path"); p.add_argument("--owner", default=""); p.add_argument("--jurisdiction", default="US-CA"); p.add_argument("--contact", default="UNSET")
     p.set_defaults(fn=cmd_init)
     p = sub.add_parser("check", help="audit dataset against NDRM + law pack")
     p.add_argument("path"); p.set_defaults(fn=cmd_check)
     p = sub.add_parser("bench", help="run open decoder benchmarks")
     p.add_argument("benchmark", nargs="?", default="all"); p.add_argument("--data")
     p.set_defaults(fn=cmd_bench)
-    p.add_parser("list-bench", help="list available benchmarks").set_defaults(fn=lambda a: print("\n".join(list_benchmarks())))
+    sub.add_parser("list-bench", help="list available benchmarks").set_defaults(fn=lambda a: print("\n".join(list_benchmarks())))
     p = sub.add_parser("report", help="human-readable compliance report")
     p.add_argument("path"); p.set_defaults(fn=cmd_report)
     args = ap.parse_args()

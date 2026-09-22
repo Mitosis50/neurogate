@@ -1,0 +1,10 @@
+pyyaml>=6.0
+
+[dev]
+pytest>=8
+
+[nwb]
+pynwb>=2.6
+
+[spikes]
+spikeinterface>=0.100

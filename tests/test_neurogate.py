@@ -7,7 +7,7 @@ import tempfile, yaml
 
 def test_init_and_check_pass():
     with tempfile.TemporaryDirectory() as d:
-        m = build_manifest(d, owner="Test Owner", jurisdiction="US-CA")
+        m = build_manifest(d, owner="Test Owner", jurisdiction="US-CA", contact="t@example.org")
         assert os.path.exists(os.path.join(d, "ndrm.yaml"))
         res = check_manifest(d)
         assert res["verdict"] == "PASS", res
@@ -41,7 +41,7 @@ def test_unset_owner_fails():
 def test_all_jurisdictions():
     for j in ["US-CO", "US-CA", "CL", "EU"]:
         with tempfile.TemporaryDirectory() as d:
-            build_manifest(d, owner="T", jurisdiction=j)
+            build_manifest(d, owner="T", jurisdiction=j, contact="t@example.org")
             assert check_manifest(d)["verdict"] == "PASS"
 
 

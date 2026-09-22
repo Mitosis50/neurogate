@@ -1,0 +1,57 @@
+Metadata-Version: 2.4
+Name: neurogate
+Version: 0.1.0
+Summary: Open compliance & rights toolkit for neural data - benchmarks + governance for democratized BCI
+Author: Elbert Basa, Mira (AI co-maintainer)
+License: Apache-2.0
+Keywords: neurodata,bci,governance,privacy,nwb,spikeinterface,benchmark
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Scientific/Engineering
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pyyaml>=6.0
+Provides-Extra: nwb
+Requires-Dist: pynwb>=2.6; extra == "nwb"
+Provides-Extra: spikes
+Requires-Dist: spikeinterface>=0.100; extra == "spikes"
+Provides-Extra: dev
+Requires-Dist: pytest>=8; extra == "dev"
+Dynamic: license-file
+
+# NeuroGate 🧠🔓
+
+**Open compliance & rights toolkit for neural data — governance + benchmarks for democratized BCI.**
+
+> Your neural data never leaves your hands. This repo hosts no patient data. Ever.
+
+## Why
+Neural-data laws just landed (Colorado HB24-1058, California CPRA provisions, Chile's constitutional
+neurorights amendment) — and **nobody ships practical tooling**. Meanwhile neural decoding has no
+shared benchmark despite strong open formats (NWB, DANDI, BIDS). NeuroGate closes both gaps.
+
+## 30 seconds to first value
+```bash
+pipx install neurogate     # or: pip install neurogate
+neurogate init ~/my-dataset --owner "Your Name" --jurisdiction US-CA
+neurogate check ~/my-dataset
+neurogate bench            # run the open benchmark suite
+```
+
+## What it does
+- **NDRM** — a tiny YAML sidecar (`ndrm.yaml`) declaring ownership, law packs, allowed uses,
+  and revocation contact for any neural dataset. Commit it next to your data.
+- **Law packs** — practical control checklists encoded from CO HB24-1058, CA CPRA neural-data
+  provisions, Chile's Art. 19 neurorights amendment, GDPR Art. 9 analog.
+- **Open decoder benchmarks** — the shared benchmark the field lacks; DANDI by reference,
+  synthetic baselines runnable out of the box.
+
+## Governance
+Stewardship council, free forever, Apache-2.0 — see [GOVERNANCE.md](GOVERNANCE.md).
+
+## Status
+v0.1 alpha. Benchmark protocol definitions are seed-quality; the protocol specs cite
+BrainGate yield data (35.6% mean initial yield) and Willett-2023 speech-decoding throughput.

@@ -19,7 +19,7 @@ LAW_PACKS = {
 }
 
 
-def build_manifest(path, owner="", jurisdiction="US-CA"):
+def build_manifest(path, owner="", jurisdiction="US-CA", contact="UNSET"):
     pack = LAW_PACKS.get(jurisdiction, LAW_PACKS["US-CA"])
     manifest = {
         "ndrm_version": "0.1",
@@ -30,7 +30,7 @@ def build_manifest(path, owner="", jurisdiction="US-CA"):
         "applicable_law": pack["law"],
         "allowed_uses": ["research"],
         "sale": False,
-        "revocation_contact": "UNSET",
+        "revocation_contact": contact,
         "required_controls": pack["requires"],
     }
     out = os.path.join(path, "ndrm.yaml")
